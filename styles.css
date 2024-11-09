@@ -3,6 +3,8 @@
     padding: 0;
     /*box-sizing: border-box;*/
     font-family: "Poppins", "san-serif";
+    max-width: 100%; /*block horizontal screen*/
+    overflow-x: hidden; /*block horizontal screen*/
   }
   
   /*
