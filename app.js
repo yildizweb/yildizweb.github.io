@@ -1,17 +1,23 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var navLinks = document.getElementById("navLinks");
-    
-    // Define the showMenu function
-    function showMenu() {
-        navLinks.style.right = "0";
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.getElementById("navLinks");
+    const hamburgerIcon = document.getElementById("hamburgerIcon");
+    const closeIcon = document.getElementById("closeIcon");
+
+    function toggleMenu() {
+        if (navLinks.classList.contains("menu-open")) {
+            // Hide menu
+            navLinks.classList.remove("menu-open");
+            closeIcon.classList.remove("visible");
+            hamburgerIcon.classList.add("visible");
+        } else {
+            // Show menu
+            navLinks.classList.add("menu-open");
+            closeIcon.classList.add("visible");
+            hamburgerIcon.classList.remove("visible");
+        }
     }
 
-    // Define the hideMenu function
-    function hideMenu() {
-        navLinks.style.right = "-200px";
-    }
-
-    // Attach the functions to the global window object
-    window.showMenu = showMenu;
-    window.hideMenu = hideMenu;
+    // Attach toggleMenu to both hamburger and close icons
+    hamburgerIcon.addEventListener("click", toggleMenu);
+    closeIcon.addEventListener("click", toggleMenu);
 });
