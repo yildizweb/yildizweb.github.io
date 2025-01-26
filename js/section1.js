@@ -7,7 +7,7 @@ const texts = [
     'Ihr Partner für Glasfaser und Hausanschlüsse.',
     'Kabelverlängerungen\nfür jede Anwendung.',
     'Individuelle Lösungen für MVT-Schränke.',
-    'Hochwertige MfT-Schränke für Ihre Projekte.',
+    'Hochwertige MFG-Schränke für Ihre Projekte.',
     'Innovative Lösungen für Schächte und Verlegung.',
     'Experten für Garten- und Landschaftsbau.',
 ];
