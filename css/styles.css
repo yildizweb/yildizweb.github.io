@@ -128,107 +128,7 @@ nav {
 
 /*(1) Section1  (Start)*/
 
-#section1 {
-  display: flex;
-  background-color: aliceblue;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: 20px;
-}
 
-#section1 h1 {
-  font-size: 48px;
-}
-
-.hero-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  row-gap: 30px;
-}
-
-.hero-container {
-  height: auto;
-  display: grid;
-  grid-template-columns: auto auto;
-  /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
-  place-content: center;
-  gap: 20px;
-}
-
-.hero-container img {
-  --r: 20px;
-  /* radius */
-  --s: 40px;
-  /* size of inner curve */
-  --x: 25px;
-  /* horizontal offset (no percentange) */
-  --y: 5px;
-  /* vertical offset (no percentange) */
-
-  width: 20vw;
-  /* Adjust width relative to viewport */
-  max-width: 200px;
-  /* Ensure it doesn't exceed a maximum size */
-  border-radius: var(--r);
-
-}
-
-
-.hero-container .top-right {
-  --_m: /calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
-  --_g: conic-gradient(at calc(100% - var(--r)) var(--r), #0000 25%, #000 0);
-  --_d: (var(--s) + var(--r));
-  mask:
-    calc(100% - var(--_d) - var(--x)) 0 var(--_m),
-    100% calc(var(--_d) + var(--y)) var(--_m),
-    radial-gradient(var(--s) at 100% 0, #0000 99%, #000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(var(--r) + var(--y)),
-    var(--_g) calc(-1*var(--_d) - var(--x)) 0,
-    var(--_g) 0 calc(var(--_d) + var(--y));
-  mask-repeat: no-repeat;
-}
-
-.hero-container .top-left {
-  --_m: /calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
-  --_g: conic-gradient(at var(--r) var(--r), #000 75%, #0000 0);
-  --_d: (var(--s) + var(--r));
-  mask:
-    calc(var(--_d) + var(--x)) 0 var(--_m),
-    0 calc(var(--_d) + var(--y)) var(--_m),
-    radial-gradient(var(--s) at 0 0, #0000 99%, #000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(var(--r) + var(--y)),
-    var(--_g) calc(var(--_d) + var(--x)) 0,
-    var(--_g) 0 calc(var(--_d) + var(--y));
-  mask-repeat: no-repeat;
-}
-
-.hero-container .bottom-left {
-  --_m: /calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
-  --_g: conic-gradient(from 180deg at var(--r) calc(100% - var(--r)), #0000 25%, #000 0);
-  --_d: (var(--s) + var(--r));
-  mask:
-    calc(var(--_d) + var(--x)) 100% var(--_m),
-    0 calc(100% - var(--_d) - var(--y)) var(--_m),
-    radial-gradient(var(--s) at 0 100%, #0000 99%, #000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(-1*var(--r) - var(--y)),
-    var(--_g) calc(var(--_d) + var(--x)) 0,
-    var(--_g) 0 calc(-1*var(--_d) - var(--y));
-  mask-repeat: no-repeat;
-}
-
-.hero-container .bottom-right {
-  --_m: /calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
-  --_g: conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)), #0000 25%, #000 0);
-  --_d: (var(--s) + var(--r));
-  mask:
-    calc(100% - var(--_d) - var(--x)) 100% var(--_m),
-    100% calc(100% - var(--_d) - var(--y)) var(--_m),
-    radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(-1*var(--r) - var(--y)),
-    var(--_g) calc(-1*var(--_d) - var(--x)) 0,
-    var(--_g) 0 calc(-1*var(--_d) - var(--y));
-  mask-repeat: no-repeat;
-}
 
 
 
@@ -311,6 +211,12 @@ nav .fa {
 #section6 {
   background-color: lightskyblue;
   height: 100vh;
+}
+
+
+#section8 {
+  min-height: 200px;
+  height: 200px;
 }
 
 
@@ -529,18 +435,6 @@ nav .fa {
 
   .bfa-wrapper #before-after-slider {
     width: 90vw;
-  }
-
-  #section1 h1 {
-    font-size: 28px;
-  }
-
-  .hero-container img {
-    width: 140px;
-    --r: 10px;
-    --s: 20px;
-    --x: 12px;
-    --y: 10px;
   }
 
 }
