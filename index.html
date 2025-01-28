@@ -105,13 +105,13 @@
                     <div id="before-image">
                         <!-- <img src="https://images.pexels.com/photos/3728078/pexels-photo-3728078.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                             alt="before" /> -->
-                        <img src="Media/Images/pano-closed.jpg" alt="before" />
+                        <img src="Media/Images/IMG-20250104-WA0020.jpg" alt="before" />
                     </div>
 
                     <div id="after-image">
                         <!-- <img src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                             alt="After" /> -->
-                        <img src="Media/Images/pano-opened.jpg" alt="After" />
+                        <img src="Media/Images/IMG-20250104-WA0021.jpg" alt="After" />
                     </div>
 
                     <div id="resizer"></div>
@@ -123,6 +123,94 @@
 
     <section id="section3" class="section-container section-project">
         <h3>section 3</h3>
+
+        <div class="project-image-container">
+            <!-- Vertical Images -->
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0001.jpg" alt="Vertical Image 1" onclick="openCarousel(0)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0002.jpg" alt="Vertical Image 2" onclick="openCarousel(1)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0003.jpg" alt="Vertical Image 3" onclick="openCarousel(2)" />
+            </div>
+
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0005.jpg" alt="Vertical Image 5" onclick="openCarousel(3)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0006.jpg" alt="Vertical Image 6" onclick="openCarousel(4)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0007.jpg" alt="Vertical Image 7" onclick="openCarousel(5)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0008.jpg" alt="Vertical Image 8" onclick="openCarousel(6)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0009.jpg" alt="Vertical Image 9" onclick="openCarousel(7)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0010.jpg" alt="Vertical Image 10" onclick="openCarousel(8)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0011.jpg" alt="Vertical Image 11" onclick="openCarousel(9)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0012.jpg" alt="Vertical Image 12" onclick="openCarousel(10)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0013.jpg" alt="Vertical Image 13" onclick="openCarousel(11)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0014.jpg" alt="Vertical Image 14" onclick="openCarousel(12)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0015.jpg" alt="Vertical Image 15" onclick="openCarousel(13)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0016.jpg" alt="Vertical Image 16" onclick="openCarousel(14)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0017.jpg" alt="Vertical Image 17" onclick="openCarousel(15)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0018.jpg" alt="Vertical Image 18" onclick="openCarousel(16)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0019.jpg" alt="Vertical Image 19" onclick="openCarousel(17)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0022.jpg" alt="Vertical Image 22" onclick="openCarousel(18)" />
+            </div>
+
+            <!-- Horizontal Images (Last Row) -->
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0004.jpg" alt="Horizontal Image 4" onclick="openCarousel(19)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0020.jpg" alt="Horizontal Image 20" onclick="openCarousel(20)" />
+            </div>
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0021.jpg" alt="Horizontal Image 21" onclick="openCarousel(21)" />
+            </div>
+
+            <div class="project-image vertical">
+                <img src="Media/Images/IMG-20250104-WA0023.jpg" alt="Horizontal Image 23" onclick="openCarousel(22)" />
+            </div>
+        </div>
+
+        <!-- Modal Carousel -->
+        <div id="carouselModal" class="modal">
+            <span class="close" onclick="closeCarousel()">&times;</span>
+            <div class="modal-content">
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <img id="carouselImage" src="" alt="Carousel Image" />
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+        </div>
+
     </section>
 
     <section id="section4" class="section-container section-contact">
@@ -223,6 +311,7 @@
     <script src="app.js"></script>
     <script src="bfa-slider.js"></script>
 
+    <script src="js/section1.js"></script>
     <script src="js/section1.js"></script>
 </body>
 

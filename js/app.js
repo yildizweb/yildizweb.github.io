@@ -20,4 +20,5 @@ document.addEventListener("DOMContentLoaded", function () {
     // Attach toggleMenu to both hamburger and close icons
     hamburgerIcon.addEventListener("click", toggleMenu);
     closeIcon.addEventListener("click", toggleMenu);
+
 });

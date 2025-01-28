@@ -1,4 +1,130 @@
 .section-project {
     background-color: lightblue;
-    height: 100vh;
+    height: auto;
+}
+
+/* Container Styling */
+.project-image-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 images per row */
+    gap: 10px;
+    /* Space between images */
+    max-width: 1200px;
+    /* Limit maximum width */
+    margin: 0 auto;
+    /* Center the container horizontally */
+    padding: 20px;
+
+    /* Ensure the container does not exceed the viewport height */
+    overflow-y: hidden;
+    /* Hide vertical scrollbars */
+    box-sizing: border-box;
+    /* Include padding in height calculations */
+}
+
+/* Common Styles for All Images */
+.project-image img {
+    object-fit: cover;
+    /* Ensure images fill their containers without distortion */
+    width: 100%;
+    /* Full width of the grid cell */
+    height: 100%;
+    /* Full height of the grid cell */
+    border-radius: 8px;
+    /* Optional rounded corners */
+    transition: transform 0.3s ease;
+    /* Smooth zoom effect */
+    cursor: pointer;
+    /* Show pointer cursor on hover */
+}
+
+.project-image img:hover {
+    transform: scale(1.05);
+    /* Slight zoom on hover */
+}
+
+/* Vertical Images */
+.project-image.vertical {
+    aspect-ratio: 3 / 4;
+    overflow-y: hidden;
+    /* Maintain a 3:4 aspect ratio */
+}
+
+/* Horizontal Images */
+.project-image.horizontal {
+    aspect-ratio: 4 / 3;
+    overflow-y: hidden;
+    /* Maintain a 4:3 aspect ratio */
+}
+
+/* Responsive Behavior */
+@media (max-width: 1200px) {
+    .project-image-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        /* Adjust number of columns for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .project-image-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        /* Smaller minimum size for mobile screens */
+    }
+}
+
+/* Modal Carousel */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+    text-align: center;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
 }
