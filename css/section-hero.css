@@ -1,6 +1,7 @@
 #section1 {
     display: flex;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    background: linear-gradient(to right, #cfe2eb, #a1a4b9);
     height: 100vh;
     flex-direction: column;
     justify-content: center;

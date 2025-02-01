@@ -1,4 +1,158 @@
+/* Section background */
 #section2 {
-    background-color: lightgreen;
-    height: 100vh;
+    background: linear-gradient(to right, #63b8e0, #6e75b9);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+    box-sizing: border-box;
+}
+
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 5rem;
+}
+
+.section-title h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Container styles applied directly to .info-cards-container */
+.info-cards-container {
+    max-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    /* Space between cards */
+    margin-bottom: 5rem;
+}
+
+/* Each card */
+.info-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: beige;
+    height: 400px;
+    /* Fixed card height */
+}
+
+/* Alternate image/text order on even cards */
+.info-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Image container */
+.info-card-image {
+    flex: 0 0 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Ensure the image fits and maintains aspect ratio */
+.info-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Text container */
+.info-card-text {
+    flex: 1;
+    padding: 4rem 3rem 3rem 3rem;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: left;
+    /* Change to left alignment if preferred */
+}
+
+/* Text styling */
+.info-card-text h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.info-card-text p {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+/* Responsive styles */
+/* Responsive styles */
+@media (max-width: 768px) {
+    .info-card {
+        flex-direction: column;
+        height: auto;
+        padding: 2rem;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        z-index: 0;
+    }
+
+    .info-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent black overlay */
+        z-index: 1;
+    }
+
+    .info-card-image {
+        display: none;
+        /* Hide image container */
+    }
+
+    /* Add background images with high specificity */
+    .info-cards-container .first-card {
+        background-image: url('../Media/infoCard1.jpg');
+        background-color: pink;
+        /* Fallback color */
+    }
+
+    .info-cards-container .second-card {
+        background-image: url('../Media/infoCard2.avif');
+        background-color: yellow;
+    }
+
+    .info-cards-container .third-card {
+        background-image: url('../Media/infoCard3.avif');
+        background-color: lightcoral;
+    }
+
+    /* Ensure text is above the overlay */
+    .info-card-text {
+        position: relative;
+        z-index: 2;
+        margin: 0;
+        padding: 2rem;
+        font-weight: bolder;
+    }
+
+    .info-card-text h2 {
+        color: #fff;
+    }
+
+    .info-card-text p {
+        color: #f0f0f0;
+    }
 }
