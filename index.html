@@ -179,10 +179,10 @@
 
 
     <section id="section3" class="section-container section-project">
-        <h3>section 3</h3>
-
+        <h3>Unsere Galerie</h3>
+        <!-- 
         <div class="project-image-container">
-            <!-- Vertical Images -->
+            
             <div class="project-image vertical">
                 <img src="Media/Images/IMG-20250104-WA0001.jpg" alt="Vertical Image 1" onclick="openCarousel(0)" />
             </div>
@@ -242,7 +242,6 @@
                 <img src="Media/Images/IMG-20250104-WA0022.jpg" alt="Vertical Image 22" onclick="openCarousel(18)" />
             </div>
 
-            <!-- Horizontal Images (Last Row) -->
             <div class="project-image vertical">
                 <img src="Media/Images/IMG-20250104-WA0004.jpg" alt="Horizontal Image 4" onclick="openCarousel(19)" />
             </div>
@@ -256,7 +255,53 @@
             <div class="project-image vertical">
                 <img src="Media/Images/IMG-20250104-WA0023.jpg" alt="Horizontal Image 23" onclick="openCarousel(22)" />
             </div>
+        </div> -->
+
+
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-button active" data-tab="team">Our Team</button>
+            <button class="tab-button" data-tab="category1">Category 1</button>
+            <button class="tab-button" data-tab="category2">Category 2</button>
         </div>
+
+        <!-- Tab Content Containers -->
+        <div class="tabs-content">
+            <!-- Our Team Container -->
+            <div id="team" class="project-image-container active-tab">
+                <div class="project-image vertical">
+                    <img src="Media/Images/IMG-20250104-WA0001.jpg" alt="Team Image 1" />
+                </div>
+                <div class="project-image vertical">
+                    <img src="Media/Images/IMG-20250104-WA0002.jpg" alt="Team Image 2" />
+                </div>
+                <!-- Add more team images as needed -->
+            </div>
+
+            <!-- Category 1 Container -->
+            <div id="category1" class="project-image-container">
+                <div class="project-image vertical">
+                    <img src="Media/Images/IMG-20250104-WA0003.jpg" alt="Category 1 Image 1" />
+                </div>
+                <div class="project-image horizontal">
+                    <img src="Media/Images/IMG-20250104-WA0005.jpg" alt="Category 1 Image 2" />
+                </div>
+                <!-- Add more category1 images as needed -->
+            </div>
+
+            <!-- Category 2 Container -->
+            <div id="category2" class="project-image-container">
+                <div class="project-image vertical">
+                    <img src="Media/Images/IMG-20250104-WA0007.jpg" alt="Category 2 Image 1" />
+                </div>
+                <div class="project-image horizontal">
+                    <img src="Media/Images/IMG-20250104-WA0008.jpg" alt="Category 2 Image 2" />
+                </div>
+                <!-- Add more category2 images as needed -->
+            </div>
+        </div>
+
+
 
         <!-- Modal Carousel -->
         <div id="carouselModal" class="modal">
@@ -393,7 +438,7 @@
     <script src="bfa-slider.js"></script>
 
     <script src="js/section1.js"></script>
-    <script src="js/section1.js"></script>
+    <script src="js/section3.js"></script>
 </body>
 
 </html>

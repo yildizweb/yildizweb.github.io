@@ -1,13 +1,31 @@
+const tabs = document.querySelectorAll(".tab-button");
+const tabContents = document.querySelectorAll(".project-image-container");
+
+tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+        // Remove 'active' class from all tabs and hide all containers
+        tabs.forEach((t) => t.classList.remove("active"));
+        tabContents.forEach((content) => content.classList.remove("active-tab"));
+
+        // Add 'active' class to the clicked tab and its corresponding container
+        const target = tab.getAttribute("data-tab");
+        tab.classList.add("active");
+        document.getElementById(target).classList.add("active-tab");
+    });
+});
+
+
+
 // Variables
 let currentSlide = 0;
-const images = document.querySelectorAll(".project-image img");
+const imageList = document.querySelectorAll(".project-image img");
 const modal = document.getElementById("carouselModal");
 const modalImage = document.getElementById("carouselImage");
 
 // Function to open the modal and display the clicked image
 function openCarousel(index) {
     currentSlide = index;
-    modalImage.src = images[currentSlide].src; // Set the modal image to the clicked image
+    modalImage.src = imageList[currentSlide].src; // Set the modal image to the clicked image
     modal.style.display = "flex"; // Show the modal
 }
 
@@ -18,8 +36,8 @@ function closeCarousel() {
 
 // Function to navigate between slides
 function changeSlide(direction) {
-    currentSlide = (currentSlide + direction + images.length) % images.length; // Handle wrapping
-    modalImage.src = images[currentSlide].src; // Update the modal image
+    currentSlide = (currentSlide + direction + imageList.length) % imageList.length; // Handle wrapping
+    modalImage.src = imageList[currentSlide].src; // Update the modal image
 }
 
 // Expose functions to the global scope (important for inline event handlers)

@@ -4,40 +4,74 @@
     padding-top: 5rem;
 }
 
-/* Container Styling */
+/* Tabs Navigation */
+.tabs-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.tab-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Hide inactive tab content */
 .project-image-container {
+    display: none;
+}
+
+.project-image-container.active-tab {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* 4 images per row */
     gap: 10px;
-    /* Space between images */
     max-width: 1200px;
-    /* Limit maximum width */
     margin: 0 auto;
-    /* Center the container horizontally */
     padding: 20px;
-
-    /* Ensure the container does not exceed the viewport height */
-    overflow-y: hidden;
-    /* Hide vertical scrollbars */
     box-sizing: border-box;
-    /* Include padding in height calculations */
 }
+
+/* Container Styling */
+/* .project-image-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: hidden;
+    box-sizing: border-box;
+} */
 
 /* Common Styles for All Images */
 .project-image img {
     object-fit: cover;
-    /* Ensure images fill their containers without distortion */
     width: 100%;
-    /* Full width of the grid cell */
     height: 100%;
-    /* Full height of the grid cell */
     border-radius: 8px;
-    /* Optional rounded corners */
     transition: transform 0.3s ease;
-    /* Smooth zoom effect */
     cursor: pointer;
-    /* Show pointer cursor on hover */
+}
+
+.project-image img:hover {
+    transform: scale(1.05);
 }
 
 .project-image img:hover {

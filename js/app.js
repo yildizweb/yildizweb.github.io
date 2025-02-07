@@ -21,4 +21,5 @@ document.addEventListener("DOMContentLoaded", function () {
     hamburgerIcon.addEventListener("click", toggleMenu);
     closeIcon.addEventListener("click", toggleMenu);
 
+
 });
