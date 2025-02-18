@@ -84,31 +84,6 @@
     body {
         font-size: 14px;
     }
-
-    /* .hamburger-icon,
-    .close-icon {
-        display: block;
-    } */
-
-    /* .hour-img {
-      display: none;
-    } */
-
-    #section7 {
-        padding: 2rem;
-    }
-
-    .contact-infos {
-        flex-direction: column;
-        row-gap: 20px;
-    }
-
-    .contact-info {
-
-        width: 70vw;
-        min-height: 8rem;
-        height: 10rem;
-    }
 }
 
 

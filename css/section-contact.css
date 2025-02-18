@@ -135,3 +135,24 @@
 .call-button:hover {
     background-color: #0056b3;
 }
+
+
+
+@media screen and (max-width: 800px) {
+    .contact-infos {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .contact-info {
+        width: 70vw;
+        min-height: 10rem;
+    }
+
+
+    .call-button {
+
+        padding: 8px 14px;
+        font-size: 16px;
+    }
+}
