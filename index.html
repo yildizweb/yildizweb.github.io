@@ -558,22 +558,28 @@
             </div>
 
             <div class="contact-info contact-phone d-inline">
+                <!-- SVG that was inside the button is now at the top -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                    <path
+                        d="M22 16.92v3a2 2 0 0 1 -2.18 2 19.87 19.87 0 0 1 -8.63 -3.07 19.47 19.47 0 0 1 -6 -6 19.87 19.87 0 0 1 -3.07 -8.67A2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72 12.33 12.33 0 0 0 .7 2.81 2 2 0 0 1 -.45 2.11l-1.2 1.2a16 16 0 0 0 6 6l1.2 -1.2a2 2 0 0 1 2.11 -.45 12.33 12.33 0 0 0 2.81 .7A2 2 0 0 1 22 16.92z">
+                    </path>
+                </svg>
 
-                <div class="small-svg-wrapper d-inline">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                <h3>Telefon</h3>
+
+                <!-- Clickable Call Button (Now with the Previous Top SVG) -->
+                <a href="tel:+491776701414" class="call-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white"
+                        stroke-linecap="round" stroke-linejoin="round" width="22" height="22" stroke-width="2">
                         <path
                             d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2c-8.072 -.49 -14.51 -6.928 -15 -15a2 2 0 0 1 2 -2">
-
                         </path>
                         <path d="M15 5h6"></path>
                         <path d="M18.5 7.5l2.5 -2.5l-2.5 -2.5"></path>
                     </svg>
-                </div>
-                <h3>Telefon</h3>
-
-                <span class="d-inline"> +49 177 670 1414 </span>
-
+                    <span>+49 177 670 1414</span>
+                </a>
             </div>
         </div>
 
@@ -610,8 +616,9 @@
     </section> -->
 
     <section id="section6" class="section-container footer">
-        <h4>Über Uns</h4>
-        <p>Die Yildiz BBS GmbH ist Ihr verlässlicher Partner für hochwertige Gebäudeautomationslösungen. <br>
+        <h4 class="ft-30">Über Uns</h4>
+        <p class="ft-20">Die Yildiz BBS GmbH ist Ihr verlässlicher Partner für hochwertige Gebäudeautomationslösungen.
+            <br>
             Mit umfassender Expertise und innovativer Technologie setzen wir Maßstäbe in Effizienz und Zuverlässigkeit.
             <br>Lassen Sie uns vernetzen und gemeinsam Ihre Projekte gestalten!
         </p>

@@ -7,8 +7,14 @@
     /* Centers horizontally */
     align-items: center;
     background-color: lightgrey;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 5rem;
+}
+
+.section-container h3 {
+    margin-top: 1rem;
+    font-size: 2.4rem;
+    text-align: center;
 }
 
 .contact-map-card {
@@ -81,12 +87,51 @@
     padding: 20px;
     text-align: center;
     width: 250px;
-    height: 150px;
+    height: 17rem;
     background: #071c34;
     color: white;
+    border-radius: 20px 60px;
 }
 
 .contact-info svg {
     color: #fda40b;
     margin-bottom: 1rem;
+}
+
+/* Call Button */
+/* Call Button */
+.call-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 18px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    gap: 10px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+/* Adjust SVG sizes */
+.call-button svg,
+.contact-info>svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Make Number Stand Out */
+.call-button span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Hover Effect */
+.call-button:hover {
+    background-color: #0056b3;
 }
