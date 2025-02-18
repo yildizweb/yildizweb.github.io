@@ -8,20 +8,30 @@
 .tabs-nav {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
     margin-bottom: 20px;
+    gap: 10px;
+    padding: 10px;
 }
 
+/* Buttons */
 .tab-button {
     background-color: white;
     border: 1px solid #ccc;
     padding: 10px 20px;
-    margin: 0 5px;
     cursor: pointer;
     font-weight: bold;
     border-radius: 8px;
     transition: background-color 0.3s ease;
+    flex: 1;
+    /* Allow buttons to take equal space */
+    min-width: 120px;
+    /* Prevent too small buttons */
+    text-align: center;
 }
 
+/* Active Button */
 .tab-button.active {
     background-color: #007bff;
     color: white;
@@ -135,6 +145,22 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
+
+    .tabs-nav {
+        flex-direction: row;
+        /* Stack buttons */
+        align-items: center;
+        /* Center items */
+        gap: 5px;
+    }
+
+    .tab-button {
+        width: 100%;
+        /* Full width */
+        max-width: 300px;
+        /* Prevent extreme stretching */
+        padding: 12px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -147,6 +173,27 @@
 
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs-nav {
+        overflow-x: auto;
+        /* Allow horizontal scrolling if needed */
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 5px;
+        gap: 1rem;
+    }
+
+    .tab-button {
+        flex: unset;
+        width: auto;
+        /* Auto-size based on content */
+        padding: 8px 12px;
+        font-size: 14px;
     }
 }
 
