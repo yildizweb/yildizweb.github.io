@@ -124,18 +124,18 @@
 
     /* Add background images with high specificity */
     .info-cards-container .first-card {
-        background-image: url('../Media/infoCard1.jpg');
+        background-image: url('../Media/Images/InfoCards/infoCard1_rkpj8q_c_scale,w_695.jpg');
         background-color: pink;
         /* Fallback color */
     }
 
     .info-cards-container .second-card {
-        background-image: url('../Media/infoCard2.avif');
+        background-image: url('../Media/Images/InfoCards/infoCard2_shmgxq_c_scale,w_491.avif');
         background-color: yellow;
     }
 
     .info-cards-container .third-card {
-        background-image: url('../Media/infoCard3.avif');
+        background-image: url('../Media/Images/InfoCards/infoCard3_z3rfvp_c_scale,w_683.avif');
         background-color: lightcoral;
     }
 
