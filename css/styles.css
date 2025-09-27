@@ -128,16 +128,6 @@ nav {
 
 /*(1) Section1  (Start)*/
 
-
-
-
-
-
-
-
-
-
-
 .text-box {
   width: 90%;
   color: black;
@@ -215,10 +205,14 @@ nav .fa {
 .footer {
   width: 100%;
   text-align: center;
-  padding: 30px 0;
+  padding: 30px 10px;
 
   min-height: 200px;
   height: 200px;
+}
+
+.footer-content {
+  width: 90vw;
 }
 
 .footer h4 {
