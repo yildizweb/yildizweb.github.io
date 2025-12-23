@@ -33,14 +33,16 @@
 
 /* Active Button */
 .tab-button.active {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+    background-color: #0050a0;
+    /* accessible blue */
+    color: #ffffff;
+    border-color: #0050a0;
 }
 
 .tab-button:hover {
-    background-color: #0056b3;
-    color: white;
+    background-color: #004494;
+    /* darker hover blue */
+    color: #ffffff;
 }
 
 /* Hide inactive tab content */
