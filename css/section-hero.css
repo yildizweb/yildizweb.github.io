@@ -149,7 +149,9 @@
 @media (max-width: 767px) {
 
     #section1 h1 {
-        font-size: 28px;
+        font-size: 25px;
+        margin: 0 3rem;
+        text-align: center;
     }
 
     .hero-container img {
