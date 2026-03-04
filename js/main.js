@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryCaption = document.getElementById("galleryCaption");
   const galleryPrev = document.getElementById("galleryPrev");
   const galleryNext = document.getElementById("galleryNext");
+  const contactForm = document.getElementById("contactForm");
+  const contactFormStatus = document.getElementById("contactFormStatus");
 
   let lastFocusedElement = null;
   let filteredCards = [...projectCards];
@@ -456,6 +458,62 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  function setFormStatus(type, message) {
+    if (!contactFormStatus) return;
+    contactFormStatus.textContent = message;
+    contactFormStatus.classList.remove("is-error", "is-success");
+    if (type) {
+      contactFormStatus.classList.add(type);
+    }
+  }
+
+  function setupContactForm() {
+    if (!contactForm) return;
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const botField = String(formData.get("website") || "").trim();
+      if (botField) {
+        setFormStatus("is-error", "Senden fehlgeschlagen. Bitte versuchen Sie es erneut.");
+        return;
+      }
+
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const phone = String(formData.get("phone") || "").trim();
+      const subject = String(formData.get("subject") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+      const consent = formData.get("consent");
+
+      if (name.length < 2 || subject.length < 3 || message.length < 10 || !consent) {
+        setFormStatus("is-error", "Bitte füllen Sie alle Pflichtfelder korrekt aus.");
+        return;
+      }
+
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!emailValid) {
+        setFormStatus("is-error", "Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+        return;
+      }
+
+      const bodyLines = [
+        `Name: ${name}`,
+        `E-Mail: ${email}`,
+        `Telefon: ${phone || "-"}`,
+        "",
+        "Nachricht:",
+        message
+      ];
+
+      const mailtoUrl = `mailto:info@yildiz-tn.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+      setFormStatus("is-success", "Ihr E-Mail-Programm wird geöffnet...");
+      window.location.href = mailtoUrl;
+    });
+  }
+
   function setupEvents() {
     if (navToggle) {
       navToggle.addEventListener("click", toggleNav);
@@ -489,5 +547,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupGsapAnimations();
   setupCounters();
   setupGallery();
+  setupContactForm();
   setupEvents();
 });

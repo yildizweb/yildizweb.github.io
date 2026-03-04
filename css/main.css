@@ -947,6 +947,121 @@ p {
   min-height: 380px;
 }
 
+.contact-form-shell {
+  margin-top: 1rem;
+  background: #ffffff;
+  border: 1px solid rgba(8, 18, 29, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.contact-form-head h3 {
+  color: #11283e;
+  margin-bottom: 0.35rem;
+}
+
+.contact-form-head p {
+  color: #47607b;
+  max-width: 70ch;
+}
+
+.contact-form {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contact-form-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-field {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.form-field span {
+  color: #1f344a;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid rgba(17, 40, 62, 0.2);
+  border-radius: 12px;
+  background: #f9fbfe;
+  color: #1d3146;
+  padding: 0.75rem 0.8rem;
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #7a90a8;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #0f5a88;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 90, 136, 0.14);
+}
+
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: #3b526a;
+  font-size: 0.9rem;
+}
+
+.form-consent input {
+  margin-top: 0.2rem;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+}
+
+.form-status {
+  font-size: 0.9rem;
+  color: #4b637c;
+}
+
+.form-status.is-error {
+  color: #b42318;
+  font-weight: 600;
+}
+
+.form-status.is-success {
+  color: #0f6c47;
+  font-weight: 600;
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .site-footer {
   padding: 2.1rem 0 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
@@ -1262,6 +1377,10 @@ p {
   .contact-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 860px) {
@@ -1340,6 +1459,7 @@ p {
   .project-grid,
   .teaser-grid,
   .contact-grid,
+  .contact-form-grid,
   .stats-grid {
     grid-template-columns: 1fr;
   }
