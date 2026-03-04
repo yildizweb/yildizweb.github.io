@@ -4,9 +4,13 @@ Statik GitHub Pages sitesi (build step yok).
 
 ## Güncel yapı
 
-- `index.html`: Tek sayfa içerik ve semantik yapı
+- `index.html`: Ana sayfa (vitrin, özet, yönlendirme)
+- `leistungen.html`: Hizmetler ve çalışma yapısı
+- `projekte.html`: Proje galerisi, filtreleme ve modal görüntüleme
+- `ueber-uns.html`: Şirket yaklaşımı ve ekip odaklı içerik
+- `kontakt.html`: İletişim kanalları ve harita
 - `css/main.css`: Tüm stil sistemi (responsive + reduced-motion dahil)
-- `js/main.js`: Menü, scroll, animasyon, sayaç, galeri modal davranışları
+- `js/main.js`: Menü, scroll, animasyon, aktif menü, sayaç, galeri modal davranışları
 - `Media/`: Kurumsal logo ve proje görselleri
 - `legacy/`: Eski CSS/JS dosyalarının arşivi (referanssız)
 

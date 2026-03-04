@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
   const navToggle = document.getElementById("navToggle");
   const siteNav = document.getElementById("siteNav");
-  const navLinks = document.querySelectorAll('.site-nav a[href^="#"], .btn[href^="#"], .site-footer a[href^="#"]');
+  const pageNavLinks = Array.from(document.querySelectorAll(".site-nav a[data-nav]"));
+  const navLinks = document.querySelectorAll('a[href^="#"]');
   const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
   const counterElements = Array.from(document.querySelectorAll("[data-counter]"));
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -36,6 +37,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function setCurrentYear() {
     const year = document.getElementById("currentYear");
     if (year) year.textContent = String(new Date().getFullYear());
+  }
+
+  function setActiveNavLink() {
+    if (pageNavLinks.length === 0) return;
+
+    const pageName = body.dataset.page || "home";
+    pageNavLinks.forEach((link) => {
+      const matches = link.dataset.nav === pageName;
+      link.classList.toggle("is-current", matches);
+      if (matches) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
   }
 
   function setHeaderState() {
@@ -77,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         const href = link.getAttribute("href");
-        if (!href || !href.startsWith("#")) return;
+        if (!href || !href.startsWith("#") || href === "#") return;
 
         const target = document.querySelector(href);
         if (!target) return;
@@ -188,11 +204,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     gsap.utils.toArray(".parallax-layer").forEach((element, index) => {
+      const triggerSection = element.closest(".hero, .page-hero") || element.closest("section") || element;
       gsap.to(element, {
         yPercent: index === 0 ? 12 : 20,
         ease: "none",
         scrollTrigger: {
-          trigger: "#hero",
+          trigger: triggerSection,
           start: "top top",
           end: "bottom top",
           scrub: 0.25
@@ -345,6 +362,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setupGallery() {
+    if (!projectGrid || projectCards.length === 0) return;
+
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const filter = button.dataset.filter || "all";
@@ -442,6 +461,10 @@ document.addEventListener("DOMContentLoaded", () => {
       navToggle.addEventListener("click", toggleNav);
     }
 
+    pageNavLinks.forEach((link) => {
+      link.addEventListener("click", () => closeNav());
+    });
+
     document.addEventListener("click", (event) => {
       if (!body.classList.contains("nav-open")) return;
       const target = event.target;
@@ -459,6 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setCurrentYear();
+  setActiveNavLink();
   setHeaderState();
   setupAnchorScroll();
   setupWordRotation();
