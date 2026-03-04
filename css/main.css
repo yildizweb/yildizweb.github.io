@@ -17,7 +17,7 @@
   --shadow-lg: 0 18px 46px rgba(3, 10, 18, 0.42);
   --shadow-md: 0 10px 24px rgba(10, 18, 30, 0.16);
   --container: min(1180px, calc(100% - 3.2rem));
-  --header-h: 82px;
+  --header-h: 76px;
 }
 
 * {
@@ -172,36 +172,50 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  min-width: 130px;
-  max-width: 240px;
+  flex: 0 0 auto;
+  min-width: 112px;
+  max-width: 178px;
 }
 
 .brand img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: clamp(36px, 4.2vw, 50px);
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.site-nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .site-nav ul {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1.15rem;
 }
 
 .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  line-height: 1;
   position: relative;
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #e6edf7;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.15rem;
 }
 
 .site-nav a::after {
@@ -914,7 +928,7 @@ p {
 
 @media (max-width: 1024px) {
   :root {
-    --header-h: 74px;
+    --header-h: 70px;
   }
 
   .hero-grid {
@@ -954,12 +968,15 @@ p {
     position: fixed;
     top: var(--header-h);
     right: -100%;
+    flex: none;
     width: min(86vw, 340px);
     height: calc(100vh - var(--header-h));
     background: rgba(7, 18, 29, 0.96);
     border-left: 1px solid rgba(255, 255, 255, 0.12);
     transition: right 0.25s ease;
     padding: 1.2rem;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .site-nav ul {
