@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+  const projectGrid = document.getElementById("projectGrid");
   const projectCards = Array.from(document.querySelectorAll(".project-card"));
 
   const galleryModal = document.getElementById("galleryModal");
@@ -256,6 +257,38 @@ document.addEventListener("DOMContentLoaded", () => {
     filteredCards = projectCards.filter((card) => !card.classList.contains("is-hidden"));
   }
 
+  function animateProjectCards() {
+    if (filteredCards.length === 0 || !projectGrid || prefersReducedMotion) return;
+
+    const hasGsap = typeof window.gsap !== "undefined";
+    if (hasGsap) {
+      const { gsap } = window;
+      gsap.killTweensOf(filteredCards);
+      gsap.fromTo(
+        filteredCards,
+        { autoAlpha: 0, y: 18, scale: 0.985, filter: "blur(4px)" },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.42,
+          ease: "power2.out",
+          stagger: 0.055,
+          overwrite: "auto"
+        }
+      );
+      return;
+    }
+
+    filteredCards.forEach((card) => {
+      card.classList.remove("is-appearing");
+      requestAnimationFrame(() => {
+        card.classList.add("is-appearing");
+      });
+    });
+  }
+
   function updateFilterButtons(activeButton) {
     filterButtons.forEach((button) => {
       const isActive = button === activeButton;
@@ -315,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const filter = button.dataset.filter || "all";
         updateFilterButtons(button);
         updateFilteredCards(filter);
+        animateProjectCards();
       });
     });
 
@@ -358,6 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     updateFilteredCards("all");
+    animateProjectCards();
   }
 
   function setupEvents() {

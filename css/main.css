@@ -635,6 +635,7 @@ p {
   cursor: pointer;
   text-align: left;
   box-shadow: var(--shadow-md);
+  will-change: transform, opacity, filter;
   transition: transform 0.22s ease, opacity 0.25s ease;
 }
 
@@ -669,6 +670,10 @@ p {
 
 .project-card.is-hidden {
   display: none;
+}
+
+.project-card.is-appearing {
+  animation: projectCardIn 0.38s ease both;
 }
 
 .about-grid {
@@ -1089,5 +1094,19 @@ p {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes projectCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
