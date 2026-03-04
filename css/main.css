@@ -1180,22 +1180,6 @@ p {
   font-size: 0.88rem;
 }
 
-.footer-top {
-  color: #e5eef9;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.footer-top:hover,
-.footer-top:focus-visible {
-  background: rgba(255, 255, 255, 0.12);
-}
-
 @media (max-width: 860px) {
   .footer-main {
     grid-template-columns: 1fr;
@@ -1237,6 +1221,43 @@ p {
 .floating-whatsapp svg {
   width: 28px;
   height: 28px;
+}
+
+.floating-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 998;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  color: #e8f1ff;
+  background: linear-gradient(135deg, #1d4ed8 0%, #0f3a95 100%);
+  box-shadow: 0 14px 32px rgba(10, 18, 30, 0.34);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floating-top:hover,
+.floating-top:focus-visible {
+  box-shadow: 0 18px 36px rgba(10, 18, 30, 0.44);
+}
+
+.floating-top svg {
+  width: 24px;
+  height: 24px;
 }
 
 .gallery-modal {

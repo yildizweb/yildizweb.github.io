@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryNext = document.getElementById("galleryNext");
   const contactForm = document.getElementById("contactForm");
   const contactFormStatus = document.getElementById("contactFormStatus");
+  const floatingTopButton = document.getElementById("floatingTop");
 
   let lastFocusedElement = null;
   let filteredCards = [...projectCards];
@@ -57,8 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setHeaderState() {
-    if (!header) return;
-    header.classList.toggle("is-solid", window.scrollY > 18);
+    if (header) {
+      header.classList.toggle("is-solid", window.scrollY > 18);
+    }
+    if (floatingTopButton) {
+      floatingTopButton.classList.toggle("is-visible", window.scrollY > 260);
+    }
   }
 
   function openNav() {
@@ -84,6 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function scrollToTarget(hash) {
+    if (hash === "#top") {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+      return;
+    }
+
     const target = document.querySelector(hash);
     if (!target) return;
     const headerHeight = header ? header.offsetHeight : 0;
@@ -514,6 +524,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function setupFloatingTopButton() {
+    if (!floatingTopButton) return;
+    floatingTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+    });
+  }
+
   function setupEvents() {
     if (navToggle) {
       navToggle.addEventListener("click", toggleNav);
@@ -548,5 +565,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCounters();
   setupGallery();
   setupContactForm();
+  setupFloatingTopButton();
   setupEvents();
 });
