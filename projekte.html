@@ -23,11 +23,6 @@
   <link rel="icon" type="image/png" href="Media/Logo/logo-no-bg.png?v=4">
   <link rel="shortcut icon" href="Media/Logo/logo-no-bg.png?v=4">
   <link rel="apple-touch-icon" href="Media/Logo/logo-no-bg.png?v=4">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
-    rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -205,6 +200,11 @@
         <p>&copy; <span id="currentYear"></span> Yildiz Tief &amp; Netzausbau GmbH. Alle Rechte vorbehalten.</p>
         <p class="footer-credit">Diese Website wurde von <a href="https://aslandigital.tr" target="_blank"
             rel="noopener noreferrer">Aslan</a> gestaltet.</p>
+        <div class="footer-legal">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <button type="button" class="consent-link" data-open-consent>Datenschutzeinstellungen</button>
+        </div>
       </div>
     </div>
   </footer>
@@ -240,8 +240,30 @@
     </svg>
   </button>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="cookie-banner-inner">
+      <h2>Datenschutz-Einstellungen</h2>
+      <p>Wir verwenden nur technisch notwendige Speicherungen sowie optional externe Inhalte (z. B. Google Maps). Sie können jederzeit Ihre Auswahl ändern.</p>
+      <div class="cookie-actions">
+        <button class="btn btn-primary" type="button" id="consentAcceptAll">Alle akzeptieren</button>
+        <button class="btn btn-ghost" type="button" id="consentRejectAll">Alle ablehnen</button>
+        <button class="btn btn-ghost" type="button" id="consentOpenSettings">Einstellungen</button>
+      </div>
+      <div class="cookie-settings" id="consentSettings" hidden>
+        <label class="cookie-option">
+          <input type="checkbox" checked disabled>
+          <span>Technisch erforderlich (immer aktiv)</span>
+        </label>
+        <label class="cookie-option">
+          <input type="checkbox" id="consentExternalMedia">
+          <span>Externe Inhalte (Google Maps)</span>
+        </label>
+        <button class="btn btn-primary" type="button" id="consentSaveSettings">Auswahl speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/consent.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 

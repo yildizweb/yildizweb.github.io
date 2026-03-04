@@ -9,8 +9,11 @@ Statik GitHub Pages sitesi (build step yok).
 - `projekte.html`: Proje galerisi, filtreleme ve modal görüntüleme
 - `ueber-uns.html`: Şirket yaklaşımı ve ekip odaklı içerik
 - `kontakt.html`: İletişim kanalları ve harita
+- `impressum.html`: Yasal künyeye ilişkin sayfa
+- `datenschutz.html`: Gizlilik / veri işleme bilgilendirmesi
 - `css/main.css`: Tüm stil sistemi (responsive + reduced-motion dahil)
 - `js/main.js`: Menü, scroll, animasyon, aktif menü, sayaç, galeri modal davranışları
+- `js/consent.js`: Çerez/harici içerik onayı ve Google Maps izin yönetimi
 - `Media/`: Kurumsal logo ve proje görselleri
 - `legacy/`: Eski CSS/JS dosyalarının arşivi (referanssız)
 
