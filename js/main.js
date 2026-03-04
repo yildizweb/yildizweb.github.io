@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         rotatingWord.textContent = rotatingWords[wordIndex];
         rotatingWord.classList.add("is-swapping");
       });
-    }, 2600);
+    }, 1600);
   }
 
   function showAllReveals() {
@@ -160,8 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
           x: 0,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.95,
-          ease: "power2.out",
+          duration: 0.55,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: element,
             start: "top 84%",
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
           trigger: "#hero",
           start: "top top",
           end: "bottom top",
-          scrub: true
+          scrub: 0.25
         }
       });
     });
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const duration = 1200;
+    const duration = 650;
     const start = performance.now();
 
     function step(timestamp) {
