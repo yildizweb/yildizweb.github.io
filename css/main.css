@@ -927,7 +927,7 @@ p {
   opacity: 0;
   transform: translate3d(0, 28px, 0);
   filter: blur(6px);
-  transition: opacity 0.42s ease, transform 0.42s ease, filter 0.42s ease;
+  transition: opacity 0.58s ease, transform 0.58s ease, filter 0.18s ease;
 }
 
 [data-reveal="left"] {

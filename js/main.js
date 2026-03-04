@@ -147,27 +147,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gsap.utils.toArray("[data-reveal]").forEach((element) => {
       const direction = element.getAttribute("data-reveal");
-      const varsFrom = { autoAlpha: 0, y: 32, filter: "blur(6px)" };
+      const varsFrom = { autoAlpha: 0, y: 32 };
 
       if (direction === "left") varsFrom.x = -38;
       if (direction === "right") varsFrom.x = 38;
 
-      gsap.fromTo(
+      const revealTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: "top 84%",
+          once: true
+        }
+      });
+
+      revealTimeline.fromTo(
         element,
         varsFrom,
         {
           autoAlpha: 1,
           x: 0,
           y: 0,
+          duration: 0.62,
+          ease: "power2.out"
+        },
+        0
+      );
+
+      revealTimeline.to(
+        element,
+        {
           filter: "blur(0px)",
-          duration: 0.55,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: element,
-            start: "top 84%",
-            once: true
-          }
-        }
+          duration: 0.18,
+          ease: "power2.out"
+        },
+        0
       );
     });
 
