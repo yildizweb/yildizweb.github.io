@@ -178,8 +178,8 @@ p {
 .brand {
   display: inline-flex;
   align-items: center;
-  min-width: 120px;
-  max-width: 190px;
+  min-width: 130px;
+  max-width: 240px;
 }
 
 .brand img {
@@ -411,7 +411,7 @@ p {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: var(--shadow-lg);
-  aspect-ratio: 1/1;
+  aspect-ratio: 16/10;
   object-fit: cover;
 }
 
