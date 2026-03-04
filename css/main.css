@@ -430,12 +430,19 @@ p {
   width: 100%;
   background: linear-gradient(90deg, #0f577f 0%, #0d3f62 52%, #0a2b43 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.18);
-  overflow-x: auto;
+  overflow: hidden;
   overflow-y: hidden;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(96, 165, 250, 0.5) rgba(255, 255, 255, 0.1);
+}
+
+.hero-services-track {
+  display: flex;
+  width: max-content;
+  animation: heroTicker 24s linear infinite;
+}
+
+.hero-services-strip:hover .hero-services-track,
+.hero-services-strip:focus-within .hero-services-track {
+  animation-play-state: paused;
 }
 
 .hero-services-list {
@@ -455,9 +462,9 @@ p {
   justify-content: center;
   align-items: center;
   gap: 0.58rem;
-  min-width: 240px;
+  min-width: 255px;
   padding: 0.25rem 0.35rem;
-  scroll-snap-align: start;
+  white-space: nowrap;
   color: #f2f8ff;
   text-align: center;
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
@@ -468,19 +475,6 @@ p {
 .hero-services-list li span {
   color: #8cb8ff;
   font-size: 1.05em;
-}
-
-.hero-services-strip::-webkit-scrollbar {
-  height: 8px;
-}
-
-.hero-services-strip::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.hero-services-strip::-webkit-scrollbar-thumb {
-  background: rgba(96, 165, 250, 0.55);
-  border-radius: 999px;
 }
 
 .page-hero {
@@ -1532,6 +1526,25 @@ p {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+  }
+
+  .hero-services-strip {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero-services-track {
+    animation: none;
+  }
+}
+
+@keyframes heroTicker {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
   }
 }
 
