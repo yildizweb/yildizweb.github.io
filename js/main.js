@@ -1,0 +1,379 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const header = document.querySelector(".site-header");
+  const navToggle = document.getElementById("navToggle");
+  const siteNav = document.getElementById("siteNav");
+  const navLinks = document.querySelectorAll('.site-nav a[href^="#"], .btn[href^="#"], .site-footer a[href^="#"]');
+  const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
+  const counterElements = Array.from(document.querySelectorAll("[data-counter]"));
+  const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const prefersReducedMotion = reduceMotionQuery.matches;
+
+  const rotatingWord = document.getElementById("rotatingWord");
+  const rotatingWords = [
+    "Glasfaser & Hausanschlüsse",
+    "MVT- und MFG-Lösungen",
+    "Schacht- und Verlegesysteme",
+    "Tiefbau mit Qualitätsfokus"
+  ];
+
+  const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+  const projectCards = Array.from(document.querySelectorAll(".project-card"));
+
+  const galleryModal = document.getElementById("galleryModal");
+  const galleryImage = document.getElementById("galleryModalImage");
+  const galleryCaption = document.getElementById("galleryCaption");
+  const galleryPrev = document.getElementById("galleryPrev");
+  const galleryNext = document.getElementById("galleryNext");
+
+  let lastFocusedElement = null;
+  let filteredCards = [...projectCards];
+  let currentModalIndex = 0;
+
+  function setCurrentYear() {
+    const year = document.getElementById("currentYear");
+    if (year) year.textContent = String(new Date().getFullYear());
+  }
+
+  function setHeaderState() {
+    if (!header) return;
+    header.classList.toggle("is-solid", window.scrollY > 18);
+  }
+
+  function openNav() {
+    if (!navToggle) return;
+    body.classList.add("nav-open");
+    navToggle.setAttribute("aria-expanded", "true");
+    navToggle.setAttribute("aria-label", "Menü schließen");
+  }
+
+  function closeNav() {
+    if (!navToggle) return;
+    body.classList.remove("nav-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Menü öffnen");
+  }
+
+  function toggleNav() {
+    if (body.classList.contains("nav-open")) {
+      closeNav();
+      return;
+    }
+    openNav();
+  }
+
+  function scrollToTarget(hash) {
+    const target = document.querySelector(hash);
+    if (!target) return;
+    const headerHeight = header ? header.offsetHeight : 0;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight + 1;
+    window.scrollTo({ top, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  }
+
+  function setupAnchorScroll() {
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        if (!href || !href.startsWith("#")) return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        event.preventDefault();
+        closeNav();
+        scrollToTarget(href);
+      });
+    });
+  }
+
+  function setupWordRotation() {
+    if (!rotatingWord || rotatingWords.length === 0) return;
+
+    let wordIndex = 0;
+    rotatingWord.textContent = rotatingWords[wordIndex];
+
+    if (prefersReducedMotion || rotatingWords.length === 1) return;
+
+    window.setInterval(() => {
+      wordIndex = (wordIndex + 1) % rotatingWords.length;
+      rotatingWord.classList.remove("is-swapping");
+      requestAnimationFrame(() => {
+        rotatingWord.textContent = rotatingWords[wordIndex];
+        rotatingWord.classList.add("is-swapping");
+      });
+    }, 2600);
+  }
+
+  function showAllReveals() {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+  }
+
+  function setupFallbackReveal() {
+    if (prefersReducedMotion) {
+      showAllReveals();
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      showAllReveals();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -20px 0px" }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+  }
+
+  function setupGsapAnimations() {
+    const hasGsap = typeof window.gsap !== "undefined";
+    const hasScrollTrigger = typeof window.ScrollTrigger !== "undefined";
+
+    if (!hasGsap || !hasScrollTrigger || prefersReducedMotion) {
+      setupFallbackReveal();
+      return;
+    }
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray("[data-reveal]").forEach((element) => {
+      const direction = element.getAttribute("data-reveal");
+      const varsFrom = { autoAlpha: 0, y: 32, filter: "blur(6px)" };
+
+      if (direction === "left") varsFrom.x = -38;
+      if (direction === "right") varsFrom.x = 38;
+
+      gsap.fromTo(
+        element,
+        varsFrom,
+        {
+          autoAlpha: 1,
+          x: 0,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.95,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 84%",
+            once: true
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray(".parallax-layer").forEach((element, index) => {
+      gsap.to(element, {
+        yPercent: index === 0 ? 12 : 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    });
+  }
+
+  function animateCounter(element) {
+    const target = Number.parseInt(element.getAttribute("data-counter") || "0", 10);
+    if (Number.isNaN(target)) return;
+
+    if (prefersReducedMotion) {
+      element.textContent = String(target);
+      return;
+    }
+
+    const duration = 1200;
+    const start = performance.now();
+
+    function step(timestamp) {
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = String(Math.floor(eased * target));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+        return;
+      }
+      element.textContent = String(target);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function setupCounters() {
+    if (counterElements.length === 0) return;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      counterElements.forEach(animateCounter);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    counterElements.forEach((counter) => observer.observe(counter));
+  }
+
+  function updateFilteredCards(filter) {
+    projectCards.forEach((card) => {
+      const match = filter === "all" || card.dataset.category === filter;
+      card.classList.toggle("is-hidden", !match);
+      card.setAttribute("aria-hidden", String(!match));
+    });
+
+    filteredCards = projectCards.filter((card) => !card.classList.contains("is-hidden"));
+  }
+
+  function updateFilterButtons(activeButton) {
+    filterButtons.forEach((button) => {
+      const isActive = button === activeButton;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+    });
+  }
+
+  function openModal(card) {
+    if (!galleryModal || !galleryImage || !galleryCaption) return;
+
+    filteredCards = projectCards.filter((item) => !item.classList.contains("is-hidden"));
+    currentModalIndex = Math.max(0, filteredCards.indexOf(card));
+    lastFocusedElement = document.activeElement;
+
+    galleryModal.hidden = false;
+    body.style.overflow = "hidden";
+    renderModalImage();
+
+    const closeButton = galleryModal.querySelector(".gallery-close");
+    if (closeButton) closeButton.focus();
+  }
+
+  function closeModal() {
+    if (!galleryModal || galleryModal.hidden) return;
+
+    galleryModal.hidden = true;
+    body.style.overflow = "";
+
+    if (lastFocusedElement instanceof HTMLElement) {
+      lastFocusedElement.focus();
+    }
+  }
+
+  function renderModalImage() {
+    if (!galleryImage || !galleryCaption || filteredCards.length === 0) return;
+
+    const currentCard = filteredCards[currentModalIndex];
+    const image = currentCard.querySelector("img");
+    if (!image) return;
+
+    galleryImage.src = image.currentSrc || image.src;
+    galleryImage.alt = image.alt;
+    galleryCaption.textContent = currentCard.dataset.caption || image.alt;
+  }
+
+  function nextModalImage(direction) {
+    if (filteredCards.length === 0) return;
+
+    currentModalIndex = (currentModalIndex + direction + filteredCards.length) % filteredCards.length;
+    renderModalImage();
+  }
+
+  function setupGallery() {
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter || "all";
+        updateFilterButtons(button);
+        updateFilteredCards(filter);
+      });
+    });
+
+    projectCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        if (card.classList.contains("is-hidden")) return;
+        openModal(card);
+      });
+    });
+
+    if (galleryPrev) {
+      galleryPrev.addEventListener("click", () => nextModalImage(-1));
+    }
+
+    if (galleryNext) {
+      galleryNext.addEventListener("click", () => nextModalImage(1));
+    }
+
+    if (galleryModal) {
+      galleryModal.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.hasAttribute("data-close-modal")) {
+          closeModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (!galleryModal || galleryModal.hidden) return;
+
+      if (event.key === "Escape") {
+        closeModal();
+      }
+      if (event.key === "ArrowRight") {
+        nextModalImage(1);
+      }
+      if (event.key === "ArrowLeft") {
+        nextModalImage(-1);
+      }
+    });
+
+    updateFilteredCards("all");
+  }
+
+  function setupEvents() {
+    if (navToggle) {
+      navToggle.addEventListener("click", toggleNav);
+    }
+
+    document.addEventListener("click", (event) => {
+      if (!body.classList.contains("nav-open")) return;
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+
+      if (siteNav && siteNav.contains(target)) return;
+      if (navToggle && navToggle.contains(target)) return;
+      closeNav();
+    });
+
+    window.addEventListener("scroll", setHeaderState, { passive: true });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 860) closeNav();
+    });
+  }
+
+  setCurrentYear();
+  setHeaderState();
+  setupAnchorScroll();
+  setupWordRotation();
+  setupGsapAnimations();
+  setupCounters();
+  setupGallery();
+  setupEvents();
+});
