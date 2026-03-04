@@ -1,4 +1,4 @@
-# YILDIZ TIEF & NETZAUSBAU GmbH Website
+# Yildiz Tief & Netzausbau GmbH Website
 
 Statik GitHub Pages sitesi (build step yok).
 
