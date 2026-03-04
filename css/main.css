@@ -778,6 +778,24 @@ p {
   font-size: 0.9rem;
 }
 
+.footer-credit {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: #9fb4c9;
+  font-size: 0.83rem;
+}
+
+.footer-credit a {
+  color: #e8f1fb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-credit a:hover,
+.footer-credit a:focus-visible {
+  color: var(--primary);
+}
+
 .footer-inner a {
   color: #e5eef9;
   font-size: 0.86rem;
