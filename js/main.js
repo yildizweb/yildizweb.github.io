@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+  const projectsSection = document.getElementById("projekte");
   const projectGrid = document.getElementById("projectGrid");
   const projectCards = Array.from(document.querySelectorAll(".project-card"));
 
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastFocusedElement = null;
   let filteredCards = [...projectCards];
   let currentModalIndex = 0;
+  let hasPlayedProjectsEntrance = false;
 
   function setCurrentYear() {
     const year = document.getElementById("currentYear");
@@ -348,7 +350,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const filter = button.dataset.filter || "all";
         updateFilterButtons(button);
         updateFilteredCards(filter);
-        animateProjectCards();
+        if (hasPlayedProjectsEntrance) {
+          animateProjectCards();
+        }
       });
     });
 
@@ -392,7 +396,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     updateFilteredCards("all");
-    animateProjectCards();
+
+    if (prefersReducedMotion || !projectsSection) return;
+
+    const playProjectsEntrance = () => {
+      if (hasPlayedProjectsEntrance) return;
+      hasPlayedProjectsEntrance = true;
+      animateProjectCards();
+    };
+
+    const rect = projectsSection.getBoundingClientRect();
+    const alreadyInView = rect.top < window.innerHeight * 0.88 && rect.bottom > 0;
+    if (alreadyInView) {
+      playProjectsEntrance();
+      return;
+    }
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            playProjectsEntrance();
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+      );
+      observer.observe(projectsSection);
+      return;
+    }
+
+    const onScroll = () => {
+      const sectionRect = projectsSection.getBoundingClientRect();
+      if (sectionRect.top < window.innerHeight * 0.88 && sectionRect.bottom > 0) {
+        playProjectsEntrance();
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
   }
 
   function setupEvents() {
