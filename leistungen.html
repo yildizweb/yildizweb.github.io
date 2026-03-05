@@ -7,10 +7,14 @@
   <title>Leistungen | Yildiz Tief &amp; Netzausbau GmbH</title>
   <meta name="description"
     content="Leistungsübersicht der Yildiz Tief & Netzausbau GmbH: Glasfaser, Hausanschlüsse, Trassenbau, Schacht- und Schranklösungen, Oberflächenwiederherstellung.">
-  <meta name="theme-color" content="#0d1b2a">
-  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0d3f62">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Yildiz Tief &amp; Netzausbau GmbH">
 
   <link rel="canonical" href="https://www.yildiz-tn.de/leistungen.html">
+  <link rel="alternate" hreflang="de-DE" href="https://www.yildiz-tn.de/leistungen.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.yildiz-tn.de/leistungen.html">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
   <meta property="og:site_name" content="Yildiz Tief & Netzausbau GmbH">
@@ -19,6 +23,12 @@
     content="Von Tiefbau und Glasfaser bis zur finalen Oberfläche: strukturierte Leistungen für moderne Netzinfrastruktur.">
   <meta property="og:url" content="https://www.yildiz-tn.de/leistungen.html">
   <meta property="og:image" content="https://www.yildiz-tn.de/Media/Glasfaser%20(Fiber%20Optics).jpg">
+  <meta property="og:image:alt" content="Glasfaserarbeiten auf der Baustelle">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Leistungen | Yildiz Tief & Netzausbau GmbH">
+  <meta name="twitter:description" content="Von Tiefbau und Glasfaser bis zur finalen Oberfläche: strukturierte Leistungen für moderne Netzinfrastruktur.">
+  <meta name="twitter:image" content="https://www.yildiz-tn.de/Media/Glasfaser%20(Fiber%20Optics).jpg">
+
 
   <link rel="icon" type="image/png" href="Media/Logo/logo-no-bg.png?v=4">
   <link rel="shortcut icon" href="Media/Logo/logo-no-bg.png?v=4">
@@ -55,7 +65,7 @@
   <main id="main-content">
     <section class="section page-hero" aria-label="Leistungen Hero">
       <div class="page-hero-media" aria-hidden="true">
-        <img class="parallax-layer" src="Media/Glasfaser (Fiber Optics).jpg" width="5000" height="3333" alt="">
+        <img class="parallax-layer" src="Media/Glasfaser (Fiber Optics).jpg" width="5000" height="3333" alt="" fetchpriority="high" decoding="async">
       </div>
       <div class="container page-hero-content">
         <p class="eyebrow" data-reveal="up">Leistungen</p>
@@ -149,7 +159,7 @@
         </div>
         <figure class="split-media" data-reveal="right">
           <img src="Media/Images/Progress/Cable/Cable-Placement-0-1200w.webp" width="1200" height="1600"
-            loading="lazy" alt="Kabelverlegung im Projektverlauf">
+            loading="lazy" decoding="async" alt="Kabelverlegung im Projektverlauf">
         </figure>
       </div>
     </section>
@@ -179,7 +189,7 @@
           <h3>Kontakt</h3>
           <a href="tel:+491776701414">+49 177 670 1414</a>
           <a href="mailto:info@yildiz-tn.de">info@yildiz-tn.de</a>
-          <a href="https://wa.me/491776701414" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <address class="footer-address">Heidelberger Straße 14<br>64283 Darmstadt</address>
         </div>
 
         <nav class="footer-legal-menu" aria-label="Rechtliches">
@@ -215,12 +225,12 @@
 
   <div class="cookie-banner" id="cookieBanner" hidden>
     <div class="cookie-banner-inner">
-      <h2>Datenschutz-Einstellungen</h2>
-      <p>Wir verwenden nur technisch notwendige Speicherungen sowie optional externe Inhalte (z. B. Google Maps). Sie können jederzeit Ihre Auswahl ändern.</p>
+      <h2>Datenschutz</h2>
+      <p>Wir nutzen notwendige Speicherungen und optional externe Inhalte (z. B. Karten).</p>
       <div class="cookie-actions">
         <button class="btn btn-primary" type="button" id="consentAcceptAll">Alle akzeptieren</button>
         <button class="btn btn-ghost" type="button" id="consentRejectAll">Alle ablehnen</button>
-        <button class="btn btn-ghost" type="button" id="consentOpenSettings">Einstellungen</button>
+        <button class="btn btn-ghost" type="button" id="consentOpenSettings">Optionen</button>
       </div>
       <div class="cookie-settings" id="consentSettings" hidden>
         <label class="cookie-option">
@@ -231,10 +241,29 @@
           <input type="checkbox" id="consentExternalMedia">
           <span>Externe Inhalte (Google Maps)</span>
         </label>
-        <button class="btn btn-primary" type="button" id="consentSaveSettings">Auswahl speichern</button>
+        <button class="btn btn-primary" type="button" id="consentSaveSettings">Speichern</button>
       </div>
     </div>
   </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Yildiz Tief & Netzausbau GmbH",
+      "url": "https://www.yildiz-tn.de/",
+      "logo": "https://www.yildiz-tn.de/Media/Logo/logo-no-bg.png",
+      "telephone": "+49 177 670 1414",
+      "email": "info@yildiz-tn.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Heidelberger Straße 14",
+        "addressLocality": "Darmstadt",
+        "postalCode": "64283",
+        "addressCountry": "DE"
+      }
+    }
+  </script>
 
   <script src="js/consent.js" defer></script>
   <script src="js/main.js" defer></script>
