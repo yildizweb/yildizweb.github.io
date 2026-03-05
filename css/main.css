@@ -1130,7 +1130,7 @@ p {
 
 .footer-main {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.45fr 0.9fr 0.9fr 1fr;
   gap: 1.1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -1154,14 +1154,16 @@ p {
 }
 
 .footer-links,
-.footer-contact-mini {
+.footer-contact-mini,
+.footer-legal-menu {
   display: grid;
   align-content: start;
   gap: 0.45rem;
 }
 
 .footer-links h3,
-.footer-contact-mini h3 {
+.footer-contact-mini h3,
+.footer-legal-menu h3 {
   color: #ffffff;
   font-size: 1rem;
   font-weight: 700;
@@ -1169,15 +1171,19 @@ p {
 }
 
 .footer-links a,
-.footer-contact-mini a {
+.footer-contact-mini a,
+.footer-legal-menu a {
   color: #c8d5e4;
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
 .footer-links a:hover,
 .footer-links a:focus-visible,
 .footer-contact-mini a:hover,
-.footer-contact-mini a:focus-visible {
+.footer-contact-mini a:focus-visible,
+.footer-legal-menu a:hover,
+.footer-legal-menu a:focus-visible {
   color: #ffffff;
 }
 
@@ -1211,28 +1217,6 @@ p {
   font-size: 0.88rem;
 }
 
-.footer-legal {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.8rem;
-}
-
-.footer-legal a,
-.consent-link {
-  color: #d9e5f4;
-  font-size: 0.84rem;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.footer-legal a:hover,
-.footer-legal a:focus-visible,
-.consent-link:hover,
-.consent-link:focus-visible {
-  color: #ffffff;
-}
-
 .consent-link {
   appearance: none;
   border: none;
@@ -1240,6 +1224,25 @@ p {
   padding: 0;
   cursor: pointer;
   font: inherit;
+  color: #c8d5e4;
+  text-align: left;
+  justify-self: start;
+  font-size: 0.9rem;
+}
+
+.consent-link:hover,
+.consent-link:focus-visible {
+  color: #ffffff;
+}
+
+.footer-consent {
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 1024px) {
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 860px) {
@@ -1253,10 +1256,6 @@ p {
 
   .footer-bottom {
     align-items: flex-start;
-  }
-
-  .footer-legal {
-    width: 100%;
   }
 }
 
