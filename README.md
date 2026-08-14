@@ -1,33 +1,33 @@
-# Yildiz Tief & Netzausbau GmbH Website
+# YILDIZ Tief & Netzausbau GmbH website
 
-Statik GitHub Pages sitesi (build step yok).
+Static, bilingual GitHub Pages website. The German routes remain at the site root; complete English equivalents are under `/en/`.
 
-## Güncel yapı
+## Structure
 
-- `index.html`: Ana sayfa (vitrin, özet, yönlendirme)
-- `leistungen.html`: Hizmetler ve çalışma yapısı
-- `projekte.html`: Proje galerisi, filtreleme ve modal görüntüleme
-- `ueber-uns.html`: Şirket yaklaşımı ve ekip odaklı içerik
-- `kontakt.html`: İletişim kanalları ve harita
-- `impressum.html`: Yasal künyeye ilişkin sayfa
-- `datenschutz.html`: Gizlilik / veri işleme bilgilendirmesi
-- `css/main.css`: Tüm stil sistemi (responsive + reduced-motion dahil)
-- `js/main.js`: Menü, scroll, animasyon, aktif menü, sayaç, galeri modal davranışları
-- `js/consent.js`: Çerez/harici içerik onayı ve Google Maps izin yönetimi
-- `Media/`: Kurumsal logo ve proje görselleri
-- `legacy/`: Eski CSS/JS dosyalarının arşivi (referanssız)
+- `tools/build-site.mjs`: central DE/EN content, route map and static HTML generator
+- `assets/css/site.css`: design tokens, components, responsive layout and reduced-motion styles
+- `assets/js/site.js`: navigation, fibre-process motion, gallery, lightbox, consent, map and contact fallback
+- `assets/brand`, `assets/icons`, `assets/images`, `assets/media`: optimised transparent brand files, project/stock imagery and the local hero video
+- `THIRD_PARTY_ASSETS.md`: asset origin and usage notes
+- `tools/audit-site.mjs`: route, language-pair, local target, SEO and JSON-LD checks
+- `tools/browser.spec.mjs`: Chromium smoke and interaction tests
+- `tools/responsive.spec.mjs`: DE/EN overflow, clipping, asset and interaction QA across 320–1920 px
 
-## Lokal önizleme
+Generated HTML is committed so the site can be served directly by GitHub Pages without a production build step.
+
+## Commands
 
 ```bash
-cd /Users/dersa/Desktop/yildiz-web/yildizweb.github.io
-python3 -m http.server 8080
+npm install
+npm run build
+npm run audit
+npm run test:browser
+npm run test:responsive
+ruby -run -ehttpd . -p4173
 ```
 
-Tarayıcı:
+The browser tests expect the local HTTP server to be running at `http://127.0.0.1:4173`.
 
-- `http://127.0.0.1:8080`
+## Deployment
 
-## Deploy
-
-`main` branch'e push edildiğinde GitHub Pages otomatik güncellenir.
+No deployment is performed by the build or audit scripts. Publishing remains the responsibility of the repository owner.
